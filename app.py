@@ -25,11 +25,7 @@ def allowed_file(filename):
 
 def Feature_extractor(file_path):
     try:
-        print(f"\n📂 Loading file: {file_path}")
         audio, sample_rate = librosa.load(file_path, sr=None, res_type='kaiser_fast')
-
-        print(f"🔊 Audio length: {len(audio)}")
-        print(f"📈 Sample rate: {sample_rate}")
 
         if len(audio) == 0:
             raise ValueError("Audio file has no data!")
@@ -37,17 +33,13 @@ def Feature_extractor(file_path):
         mfccs = librosa.feature.mfcc(y=audio, sr=sample_rate, n_mfcc=40)
         mfccs = mfccs[0:-1]
 
-        print(f"📊 MFCC shape: {mfccs.shape}")
-
         if mfccs.shape[1] == 0:
             raise ValueError("MFCC extraction failed, got empty feature matrix.")
 
         mfccs_scaled = np.mean(mfccs.T, axis=0)
-        print(f"✅ Feature vector shape: {mfccs_scaled.shape}")
         return mfccs_scaled.reshape(1, -1)
 
     except Exception as e:
-        print(f"❌ Feature extraction error: {e}")
         raise ValueError(f"Feature extraction error: {e}")
 
 
