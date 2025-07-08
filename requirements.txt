@@ -1,7 +1,13 @@
 numpy
-matplotlib
+matplotlib.pyplot
 pandas
-sklearn
+sklearn.compose
+sklearn.preprocessing
+sklearn.import
+sklearn.model_selection
+sklearn.ensemble
+sklearn.linear_model
+sklearn.neural_network
 pickle
 xgboost
 scipy
