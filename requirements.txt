@@ -1,9 +1,5 @@
-streamlit
 numpy
-matplotlib
 pandas
 xgboost
-scikit-learn
-scipy
 flask
 librosa
