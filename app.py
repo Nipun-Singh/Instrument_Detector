@@ -63,6 +63,7 @@ def index():
             # If scaler used:
             # features = scaler.transform(features)
             prediction = model.predict(features)
+            prediction = prediction[0].split('_')[1]
         except Exception as e:
             prediction = f"Error: {str(e)}"
         finally:
